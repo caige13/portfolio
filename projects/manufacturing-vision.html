@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manufacturing Vision System — Caige Middaugh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0908; --bg2: #0f0e0c; --bg3: #161412; --surface: #1c1a16;
+      --border: #2a2722; --text: #ede6d6; --muted: #6b6459;
+      --accent: #d4873a; --accent2: #e89c4a; --gold: #f0c060; --ember: #c46a28;
+      --display: 'Syne', sans-serif; --serif: 'Fraunces', serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--mono); font-size: 14px; line-height: 1.6; overflow-x: hidden; cursor: none; }
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: screen; }
+    .cursor-ring { position: fixed; width: 40px; height: 40px; border: 1px solid rgba(212,135,58,0.3); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.25s cubic-bezier(.2,.8,.3,1), height 0.25s cubic-bezier(.2,.8,.3,1), border-color 0.2s; }
+    .cursor-ring.hovering { width: 64px; height: 64px; border-color: var(--accent); }
+    @media (hover: none), (pointer: coarse) { .cursor, .cursor-ring { display: none !important; } body, a, button { cursor: auto !important; } }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.5; }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(.2,.8,.3,1), transform 0.8s cubic-bezier(.2,.8,.3,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.12s; }
+    .reveal-d2 { transition-delay: 0.24s; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(10,9,8,0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(42,39,34,0.5); }
+    .nav-back { display: flex; align-items: center; gap: 10px; color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; cursor: none; }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-project { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text); }
+    .project-hero { min-height: 100vh; display: flex; align-items: flex-end; padding: 0 48px 100px; position: relative; overflow: hidden; }
+    .project-hero-bg { position: absolute; inset: 0; }
+    .project-hero-bg .orb { position: absolute; border-radius: 50%; filter: blur(100px); }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(212,135,58,0.2) 0%, transparent 70%); top: -10%; right: -5%; animation: orbFloat1 22s ease-in-out infinite; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(240,192,96,0.12) 0%, transparent 70%); bottom: 10%; left: -8%; animation: orbFloat2 28s ease-in-out infinite; }
+    @keyframes orbFloat1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,30px) scale(1.06); } }
+    @keyframes orbFloat2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-40px) scale(1.08); } }
+    .project-hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .project-category { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.8,.3,1) 0.3s forwards; }
+    .project-category::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
+    .project-hero h1 { font-family: var(--display); font-size: clamp(48px, 8vw, 112px); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s cubic-bezier(.2,.8,.3,1) 0.5s forwards; }
+    .project-hero .tagline { font-size: 15px; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.8,.3,1) 0.7s forwards; }
+    .project-hero .tagline strong { color: var(--text); font-weight: 500; }
+    .project-meta { display: flex; gap: 40px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.8,.3,1) 0.9s forwards; }
+    .meta-item { display: flex; flex-direction: column; gap: 6px; }
+    .meta-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+    .meta-value { font-size: 13px; color: var(--text); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .story { padding: 100px 48px; }
+    .story-inner { max-width: 760px; margin: 0 auto; }
+    .story-wide { max-width: 1000px; margin: 0 auto; }
+    .story-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+    .story-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .story h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 28px; line-height: 1.1; }
+    .story p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 20px; }
+    .story p strong { color: var(--text); font-weight: 500; }
+    .story-alt { background: var(--bg2); }
+    .story-quote { font-family: var(--serif); font-size: clamp(20px, 3vw, 32px); font-weight: 300; font-style: italic; color: var(--accent); line-height: 1.5; padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0; }
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 36px 0; }
+    .tech-item { background: var(--surface); padding: 24px; }
+    .tech-item-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tech-item-value { font-size: 13px; color: var(--text); line-height: 1.6; }
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 36px 0; }
+    .feature-card { padding: 32px; border: 1px solid var(--border); background: var(--surface); transition: background 0.2s; }
+    .feature-card:hover { background: var(--bg3); }
+    .feature-num { font-family: var(--serif); font-size: 36px; font-weight: 900; color: var(--border); margin-bottom: 16px; line-height: 1; }
+    .feature-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .feature-card p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+    .pipeline-steps { display: flex; flex-direction: column; gap: 0; margin: 36px 0; }
+    .pipeline-step { display: grid; grid-template-columns: 60px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: start; }
+    .pipeline-step:first-child { border-top: 1px solid var(--border); }
+    .pipeline-step-num { font-family: var(--serif); font-size: 32px; font-weight: 900; color: var(--accent); line-height: 1; }
+    .pipeline-step h3 { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .pipeline-step p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+    .back-section { padding: 80px 48px; text-align: center; border-top: 1px solid var(--border); }
+    .back-link { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 32px; border: 1px solid var(--border); transition: all 0.25s; cursor: none; }
+    .back-link:hover { border-color: var(--accent); color: var(--text); }
+    @media (max-width: 900px) { nav { padding: 20px 24px; } .project-hero { padding: 0 24px 60px; } .story { padding: 60px 24px; } .features-grid { grid-template-columns: 1fr; } .project-meta { gap: 24px; } .pipeline-step { grid-template-columns: 40px 1fr; gap: 16px; } .back-section { padding: 60px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </a>
+    <span class="nav-project">Manufacturing Vision</span>
+  </nav>
+
+  <section class="project-hero">
+    <div class="project-hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="project-hero-content">
+      <div class="project-category">Computer Vision &middot; Industrial</div>
+      <h1>Manufacturing Vision System</h1>
+      <p class="tagline">Turning <strong>factory floor footage</strong> into actionable simulation data. A computer vision pipeline that sees what manual data collection can't.</p>
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Lead Engineer @ Worlds</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Stack</span>
+          <span class="meta-value">Python, CV, InfluxDB, Dash</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Delivered (Private)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story story-alt">
+    <div class="story-inner reveal">
+      <div class="story-label">01 &mdash; Overview</div>
+      <h2>What is it?</h2>
+      <p>A computer vision pipeline that analyzes industrial manufacturing footage to generate <strong>discrete event timing data</strong>. The system tracks stamp machines, auto loaders, forklifts, and human operators across factory floor video, extracting precise timing and sequence information.</p>
+      <p>This structured data feeds directly into <strong>Simio simulation software</strong>, enabling manufacturing clients to model and optimize their throughput without weeks of manual observation and stopwatch timing.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-inner reveal">
+      <div class="story-label">02 &mdash; The Problem</div>
+      <h2>Manual data collection doesn't scale</h2>
+      <p>Discrete event simulation is one of the most powerful tools for optimizing manufacturing throughput. But it requires <strong>accurate timing data</strong> — how long each machine cycle takes, how often operators intervene, how material flows between stations.</p>
+      <p>Traditionally, this data is collected by engineers standing on the floor with clipboards and stopwatches. It's slow, error-prone, limited in sample size, and can't capture the full picture of complex multi-station workflows. Existing camera infrastructure was going unused.</p>
+      <div class="story-quote reveal reveal-d1">"You can't optimize what you can't measure — and manual measurement misses more than it catches."</div>
+    </div>
+  </section>
+
+  <section class="story story-alt">
+    <div class="story-inner reveal">
+      <div class="story-label">03 &mdash; Genesis</div>
+      <h2>Camera infrastructure, untapped</h2>
+      <p>The insight was straightforward: manufacturing facilities already have extensive camera coverage for security purposes. That same footage contains all the timing data needed for simulation — <strong>it just needs to be extracted computationally</strong>.</p>
+      <p>Developed at Worlds for an industrial manufacturing client, this project turned an existing investment (security cameras) into a continuous source of high-fidelity operational data.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-inner story-wide reveal">
+      <div class="story-label">04 &mdash; The Pipeline</div>
+      <h2>From footage to simulation</h2>
+      <div class="pipeline-steps reveal reveal-d1">
+        <div class="pipeline-step">
+          <div class="pipeline-step-num">01</div>
+          <div>
+            <h3>Video Ingestion</h3>
+            <p>Raw footage from factory floor cameras is ingested and pre-processed — stabilization, frame normalization, and region-of-interest extraction.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-step-num">02</div>
+          <div>
+            <h3>Object Detection & Tracking</h3>
+            <p>Computer vision models identify and track machines, vehicles (forklifts), and operators across frames, maintaining identity through occlusions and camera transitions.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-step-num">03</div>
+          <div>
+            <h3>Event Recognition</h3>
+            <p>State changes are detected — machine cycle starts/stops, loader operations, operator interventions — converting continuous video into discrete events with precise timestamps.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-step-num">04</div>
+          <div>
+            <h3>Time-Series Storage</h3>
+            <p>Event data streams into InfluxDB, providing a queryable time-series database of all manufacturing activities with sub-second precision.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-step-num">05</div>
+          <div>
+            <h3>Visualization & Export</h3>
+            <p>Dash/Plotly dashboards provide real-time and historical views. Structured data exports feed directly into Simio for discrete event simulation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story story-alt">
+    <div class="story-inner story-wide reveal">
+      <div class="story-label">05 &mdash; Technical Architecture</div>
+      <h2>The stack</h2>
+      <div class="tech-grid reveal reveal-d1">
+        <div class="tech-item">
+          <div class="tech-item-label">Core Language</div>
+          <div class="tech-item-value">Python</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Computer Vision</div>
+          <div class="tech-item-value">OpenCV, Detection Models</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Time-Series DB</div>
+          <div class="tech-item-value">InfluxDB</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Visualization</div>
+          <div class="tech-item-value">Dash / Plotly</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Output</div>
+          <div class="tech-item-value">Simio-compatible data</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Context</div>
+          <div class="tech-item-value">Client project @ Worlds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-inner reveal">
+      <div class="story-label">06 &mdash; Outcome</div>
+      <h2>From cameras to competitive advantage</h2>
+      <p>The system replaced weeks of manual data collection with <strong>continuous, automated observation</strong>. The client gained access to timing data at a scale and precision that was previously impossible — thousands of machine cycles instead of dozens.</p>
+      <p>This project sits at the intersection of my interests in computer vision, data engineering, and real-world industrial applications. It's a clear example of how <strong>software can unlock value from existing infrastructure</strong> that organizations didn't know they had.</p>
+    </div>
+  </section>
+
+  <div class="back-section">
+    <a href="../index.html" class="back-link reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to all projects
+    </a>
+  </div>
+
+  <script>
+    const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');let mx=-100,my=-100,rx=-100,ry=-100;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function ac(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac);})();
+    document.querySelectorAll('a,button,.feature-card,.pipeline-step').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
