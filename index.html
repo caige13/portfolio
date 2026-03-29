@@ -704,33 +704,33 @@
     }
     .exp-item:first-child { border-top: 1px solid var(--border); }
     .exp-period {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--accent);
       letter-spacing: 0.1em;
       margin-bottom: 6px;
     }
     .exp-company {
       font-family: var(--serif);
-      font-size: 20px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
     }
-    .exp-location { font-size: 11px; color: var(--muted); }
+    .exp-location { font-size: 13px; color: var(--muted); }
     .exp-role {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       letter-spacing: 0.03em;
     }
     .exp-bullets {
       list-style: none;
-      display: flex; flex-direction: column; gap: 8px;
+      display: flex; flex-direction: column; gap: 10px;
     }
     .exp-bullets li {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.7;
       display: flex; gap: 12px;
     }
@@ -739,19 +739,19 @@
       color: var(--accent);
       flex-shrink: 0;
     }
-    .exp-projects { margin-top: 24px; }
+    .exp-projects { margin-top: 28px; }
     .exp-projects-label {
-      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px; font-weight: 500;
+      font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px; font-weight: 500;
     }
     .exp-projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 10px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; max-width: 900px;
     }
     .exp-project-link, a.exp-project-link {
       display: flex; flex-direction: column; gap: 6px;
-      color: var(--text); text-decoration: none; font-size: 12px; font-weight: 500;
-      padding: 14px 16px; border: 1px solid var(--border); border-top: 2px solid var(--accent);
+      color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500;
+      padding: 18px 20px; border: 1px solid var(--border); border-top: 2px solid var(--accent);
       transition: all 0.25s; cursor: none; background: var(--surface);
     }
     a.exp-project-link:hover { border-color: var(--accent); background: var(--bg3); }
@@ -759,19 +759,19 @@
       color: var(--text); opacity: 0.85;
     }
     .nda-tag {
-      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); border: 1px solid var(--border); padding: 2px 6px;
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--border); padding: 2px 7px;
     }
     .exp-project-desc {
-      font-size: 11px; color: var(--muted); line-height: 1.6;
+      font-size: 13px; color: var(--muted); line-height: 1.6;
       margin-top: 4px; font-weight: 400; letter-spacing: 0;
       text-transform: none;
     }
-    .exp-project-tech { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .exp-project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
     .ptag {
-      font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--accent); border: 1px solid rgba(212,135,58,0.3);
-      background: rgba(212,135,58,0.06); padding: 2px 7px;
+      background: rgba(212,135,58,0.06); padding: 3px 9px;
     }
 
     /* ── CONTACT ── */
@@ -1014,12 +1014,13 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a software engineer who cares about <strong>building things people actually use</strong>. I thrive at the intersection of client-facing product thinking and deep technical execution — comfortable owning a feature end-to-end, from architecture to deployment to user feedback.</p>
-        <p>At <strong>Worlds</strong>, I serve as sole technical owner across architecture, development, QA, and project management — a role that's sharpened my judgment for when to move fast and when to slow down and build right. Previously at <strong>Ethos Group</strong> as a full-stack engineer.</p>
-        <p>Outside of work I'm pursuing an <strong>MS in AI at UT Austin</strong> and building side projects that scratch real itches: a WoW community hub with thousands of weekly users, a Shopify import validation tool, and an AI-powered restaurant management service.</p>
+        <p>I'm a software engineer who cares about <strong>building things people actually use</strong> — and making the people around me more effective. Whether that's shipping production systems, building internal tools that improve a team's quality of life, or creating something a community asked for, the throughline is the same: <strong>listen, build, ship, iterate</strong>.</p>
+        <p>At <strong>Worlds</strong>, I built an internal SDK to streamline how we developed against the platform — centralizing integration patterns and reducing repetitive setup work. At <strong>Ethos Group</strong>, I was promoted to the R&amp;D team for rapid delivery and led the integration of AI/NLP features across the product suite.</p>
+        <p>Outside of work, I build for communities I'm part of. <strong>AzerothHub</strong> started because the WoW community I play in needed a tool nobody had built — now it has thousands of weekly users. <strong>PickleBrackit</strong> exists because the tournament app our pickleball group used went behind a paywall and organizers needed a free replacement. I listen to what people need and build it.</p>
+        <p>I'm pursuing an <strong>MS in AI at UT Austin</strong> while working full-time, and I bring that same energy to everything — collaboration, community, and shipping things that matter.</p>
         <div class="currently">
           <div class="currently-label">Currently exploring</div>
-          <p>LLM-native application architecture, agentic workflows with <strong>LangGraph + n8n</strong>, and the product surface area between AI APIs and real business workflows.</p>
+          <p>LLM-native application architecture, agentic workflows with <strong>LangGraph + N8N</strong>, and the product surface area between AI APIs and real business workflows.</p>
         </div>
       </div>
       <div class="reveal reveal-d1">
@@ -1034,7 +1035,7 @@
           </div>
           <div class="stat-box">
             <div class="stat-num">10<span>+</span></div>
-            <div class="stat-label">Core Technologies</div>
+            <div class="stat-label">Projects Shipped to Production</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">&infin;</div>
@@ -1205,9 +1206,9 @@
         <div class="exp-content">
           <div class="exp-role">Full Stack Software Engineer</div>
           <ul class="exp-bullets">
-            <li>Built and maintained large-scale distributed infrastructure serving hundreds of client locations across the U.S. (Azure IoT Edge, Docker, Kubernetes)</li>
+            <li>Built and maintained large-scale distributed infrastructure (IoT Edge) serving hundreds of client locations across the U.S. (Azure IoT Edge, Docker, Kubernetes)</li>
             <li>Promoted to R&amp;D team for rapid delivery of high-priority products, owning initiatives from concept through production</li>
-            <li>Spearheaded integration of NLP models and LLMs into production products — prompt engineering, token optimization, and real-time monitoring of non-deterministic AI behavior</li>
+            <li>Spearheaded integration of NLP models and LLMs into production products, plus prompt engineering, token optimization, and real-time monitoring of non-deterministic AI behavior</li>
             <li>Engineered data transfer compiler integrating internal systems with 12+ external partner APIs using scalable microservice architecture</li>
           </ul>
           <div class="exp-projects">
@@ -1221,7 +1222,7 @@
             <span class="exp-project-link exp-project-nda">
               Sales Replay <span class="nda-tag">NDA</span>
               <div class="exp-project-desc">Record, transcribe, and apply AI features — semantic analysis, Q&amp;A extraction, rankings against training manual, AI feedback. Microservices synced with Playbook.</div>
-              <div class="exp-project-tech"><span class="ptag">OpenAI</span><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">Microservices</span></div>
+              <div class="exp-project-tech"><span class="ptag">OpenAI</span><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">IoT Edge</span><span class="ptag">Microservices</span></div>
             </span>
             <span class="exp-project-link exp-project-nda">
               Playbook <span class="nda-tag">NDA</span>
@@ -1393,7 +1394,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-copy">&copy; 2026 <span>Caige Middaugh</span> — Built with intention.</div>
+    <div class="footer-copy">&copy; 2026 <span>Caige Middaugh</span> — Powered by caffeine.</div>
     <nav class="footer-nav">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
