@@ -126,8 +126,8 @@
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.14em;
+      font-size: 14px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: color 0.2s;
       cursor: none;
@@ -577,18 +577,18 @@
     .tag {
       padding: 5px 12px;
       border: 1px solid rgba(212,135,58,0.25);
-      color: var(--accent2);
-      background: rgba(212,135,58,0.04);
+      color: var(--text);
+      background: rgba(212,135,58,0.06);
       font-size: 11px;
       letter-spacing: 0.05em;
       transition: all 0.2s;
     }
-    .tag:hover { border-color: var(--accent); color: var(--text); background: rgba(212,135,58,0.08); transform: translateY(-1px); }
+    .tag:hover { border-color: var(--accent); color: #fff; background: rgba(212,135,58,0.12); transform: translateY(-1px); }
     .tag[data-yrs]::after {
       content: attr(data-yrs);
       font-size: 9px;
       letter-spacing: 0.05em;
-      color: var(--accent);
+      color: var(--text);
       opacity: 0.7;
       margin-left: 4px;
     }
@@ -704,21 +704,21 @@
     }
     .exp-item:first-child { border-top: 1px solid var(--border); }
     .exp-period {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--accent);
       letter-spacing: 0.1em;
       margin-bottom: 6px;
     }
     .exp-company {
       font-family: var(--serif);
-      font-size: 28px;
+      font-size: 34px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
     }
-    .exp-location { font-size: 13px; color: var(--muted); }
+    .exp-location { font-size: 16px; color: var(--muted); }
     .exp-role {
-      font-size: 16px;
+      font-size: 19px;
       font-weight: 500;
       color: var(--text);
       margin-bottom: 14px;
@@ -730,7 +730,7 @@
     }
     .exp-bullets li {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 17px;
       line-height: 1.7;
       display: flex; gap: 12px;
     }
@@ -739,39 +739,43 @@
       color: var(--accent);
       flex-shrink: 0;
     }
-    .exp-projects { margin-top: 28px; }
+    .exp-projects { margin-top: 28px; margin-left: -280px; }
     .exp-projects-label {
-      font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+      font-size: 16px; letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 14px; font-weight: 500;
+      text-align: center;
     }
     .exp-projects-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 12px; max-width: 900px;
+      gap: 12px; max-width: 1000px; margin: 0 auto;
     }
-    .exp-project-link, a.exp-project-link {
-      display: flex; flex-direction: column; gap: 6px;
-      color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500;
-      padding: 18px 20px; border: 1px solid var(--border); border-top: 2px solid var(--accent);
-      transition: all 0.25s; cursor: none; background: var(--surface);
+    .exp-project-link {
+      display: flex; flex-direction: column;
+      color: var(--text); text-decoration: none;
+      padding: 18px 18px; border: 1px solid var(--border); border-top: 2px solid var(--accent);
+      transition: all 0.3s cubic-bezier(.2,.8,.3,1); cursor: none;
+      background: var(--surface); position: relative;
+      transform-style: preserve-3d; perspective: 600px;
     }
-    a.exp-project-link:hover { border-color: var(--accent); background: var(--bg3); }
-    .exp-project-nda {
-      color: var(--text); opacity: 0.85;
+    .exp-project-link:hover { background: var(--bg3); border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .exp-project-title {
+      font-size: 16px; font-weight: 600; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
     .nda-tag {
-      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); border: 1px solid var(--border); padding: 2px 7px;
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--border); padding: 2px 6px;
+      vertical-align: middle;
     }
     .exp-project-desc {
       font-size: 13px; color: var(--muted); line-height: 1.6;
-      margin-top: 4px; font-weight: 400; letter-spacing: 0;
-      text-transform: none;
+      margin-bottom: 10px; font-weight: 400; flex: 1;
     }
-    .exp-project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .exp-project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
     .ptag {
       font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--accent); border: 1px solid rgba(212,135,58,0.3);
-      background: rgba(212,135,58,0.06); padding: 3px 9px;
+      background: rgba(212,135,58,0.06); padding: 3px 8px;
     }
 
     /* ── CONTACT ── */
@@ -849,6 +853,176 @@
     }
     .footer-nav a:hover { color: var(--text); }
 
+    /* ── SKILLS TOGGLE & BUBBLES ── */
+    .skills-toggle { display: flex; gap: 0; margin-bottom: 32px; }
+    .skills-toggle-btn {
+      padding: 10px 24px; font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); background: none;
+      border: 1px solid var(--border); cursor: pointer; font-family: var(--mono);
+      transition: all 0.2s;
+    }
+    .skills-toggle-btn:first-child { border-right: none; }
+    .skills-toggle-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(212,135,58,0.06); }
+    .skills-grid.hidden { display: none !important; }
+    .skills-bubbles { position: relative; width: 100%; height: 550px; border: 1px solid var(--border); background: var(--bg2); overflow: hidden; display: none; }
+    .skills-bubbles.active { display: block; }
+    .bubble {
+      position: absolute; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      cursor: grab; user-select: none; text-align: center;
+      transition: box-shadow 0.3s;
+      -webkit-user-select: none;
+    }
+    .bubble:active { cursor: grabbing; }
+    .bubble:hover { box-shadow: 0 0 24px rgba(212,135,58,0.15); }
+    .bubble-label {
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text); font-weight: 600; pointer-events: none;
+      line-height: 1.3; padding: 0 8px;
+    }
+    .bubble-count { color: var(--accent); pointer-events: none; margin-top: 2px; }
+    .bubble-top-skill { color: var(--muted); pointer-events: none; margin-top: 1px; }
+    .bubble.expanded {
+      border-radius: 16px !important; z-index: 10;
+      cursor: pointer;
+    }
+    .bubble-skills {
+      display: none; flex-wrap: wrap; gap: 5px; justify-content: center;
+      padding: 10px; max-width: 100%; overflow: hidden;
+    }
+    .bubble.expanded .bubble-skills { display: flex; }
+    .bubble.expanded .bubble-label { margin-bottom: 6px; font-size: 15px; }
+    .bubble.expanded .bubble-count { display: none; }
+    .bubble-skill-tag {
+      font-size: 12px; padding: 4px 10px;
+      border: 1px solid rgba(212,135,58,0.3); color: var(--text);
+      background: rgba(212,135,58,0.12); white-space: nowrap;
+    }
+
+    /* ── TERMINAL ── */
+    .terminal-section { background: var(--bg); padding: 80px 48px; }
+    .hero-terminal {
+      margin-top: 40px; width: 100%; max-width: 560px;
+      opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.8,.3,1) 2.2s forwards;
+    }
+    .terminal {
+      max-width: 700px; margin: 0 auto;
+      background: #0c0c0c; border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; font-family: var(--mono);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+      background: #1a1a1a; border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+    .terminal-title { font-size: 11px; color: var(--muted); margin-left: auto; margin-right: auto; }
+    .terminal-body { padding: 20px; min-height: 120px; max-height: 200px; overflow-y: auto; font-size: 13px; line-height: 1.8; }
+    .terminal-line { color: var(--muted); }
+    .terminal-line .prompt { color: var(--accent); }
+    .terminal-line .cmd { color: var(--text); }
+    .terminal-line .output { color: var(--muted); }
+    .terminal-line .hl { color: var(--accent2); }
+    .terminal-input-wrap { display: flex; align-items: center; margin-top: 8px; }
+    .terminal-input-wrap .prompt { color: var(--accent); margin-right: 8px; font-size: 13px; }
+    .terminal-input {
+      background: none; border: none; color: #e8e0d0; font-family: var(--mono);
+      font-size: 13px; outline: none; flex: 1; caret-color: var(--accent);
+    }
+    .terminal-input::placeholder { color: #555; }
+    @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+    .terminal-cursor { color: var(--accent); animation: blink 1s step-end infinite; margin-left: 2px; }
+
+    /* ── CODE SNIPPET ── */
+    .code-section { background: var(--bg2); padding: 80px 48px; }
+    .code-window {
+      max-width: 750px; margin: 0 auto;
+      background: #0c0c0c; border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden;
+    }
+    .code-bar {
+      display: flex; align-items: center; padding: 10px 16px;
+      background: #1a1a1a; border-bottom: 1px solid var(--border);
+    }
+    .code-bar-dots { display: flex; gap: 6px; }
+    .code-bar-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .code-filename { font-size: 11px; color: var(--muted); margin-left: 16px; }
+    .code-body {
+      padding: 20px; font-family: var(--mono); font-size: 12px;
+      line-height: 1.7; overflow-x: auto; white-space: pre;
+    }
+    .code-body .kw { color: #c678dd; }
+    .code-body .fn { color: #61afef; }
+    .code-body .str { color: #98c379; }
+    .code-body .cm { color: #5c6370; }
+    .code-body .num { color: #d19a66; }
+    .code-body .op { color: #56b6c2; }
+    .code-body .var { color: #e06c75; }
+    .code-body .typ { color: #e5c07b; }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; z-index: 600;
+      background: linear-gradient(to right, var(--accent), var(--gold));
+      width: 0; transition: none;
+    }
+
+    /* ── 3D CARD TILT ── */
+    .project-item, .exp-project-link { transform-style: preserve-3d; perspective: 800px; }
+    @keyframes jello {
+      0% { transform: perspective(800px) rotateY(0) rotateX(0); }
+      15% { transform: perspective(800px) rotateY(2.5deg) rotateX(-1deg); }
+      30% { transform: perspective(800px) rotateY(-1.8deg) rotateX(0.7deg); }
+      45% { transform: perspective(800px) rotateY(1.2deg) rotateX(-0.4deg); }
+      60% { transform: perspective(800px) rotateY(-0.6deg) rotateX(0.2deg); }
+      75% { transform: perspective(800px) rotateY(0.3deg) rotateX(-0.1deg); }
+      100% { transform: perspective(800px) rotateY(0) rotateX(0); }
+    }
+    .jello-out { animation: jello 0.8s ease; }
+
+    /* ── PROJECT HOVER PREVIEW ── */
+    .project-preview {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 300px;
+      background-size: cover; background-position: center top;
+      opacity: 0; transition: opacity 0.5s;
+      pointer-events: none; z-index: 0;
+    }
+    .project-preview::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--surface) 0%, rgba(28,26,22,0.6) 50%, rgba(28,26,22,0.3) 100%);
+    }
+    .project-item:hover .project-preview { opacity: 1; }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      width: 36px; height: 36px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; cursor: pointer;
+      transition: all 0.2s; margin-left: 24px; flex-shrink: 0; padding: 0;
+    }
+    .theme-toggle svg { width: 18px; height: 18px; fill: currentColor; }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+
+    /* Light theme */
+    body.light {
+      --bg: #f5f2ed; --bg2: #eae6df; --bg3: #ddd8d0;
+      --surface: #e8e3db; --border: #ccc7be; --text: #1a1815;
+      --muted: #6b6459;
+    }
+    body.light::before { opacity: 0.15; }
+    body.light .scroll-progress { background: linear-gradient(to right, var(--accent), var(--ember)); }
+    body.light .site-nav { background: linear-gradient(to bottom, rgba(245,242,237,0.95) 0%, rgba(245,242,237,0.6) 70%, transparent 100%); }
+    body.light .site-nav.scrolled { background: rgba(245,242,237,0.92); }
+    body.light .nav-logo, body.light .nav-links a { color: var(--text); }
+    body.light .nav-links a:hover { color: var(--accent); }
+    body.light .hero-pill { color: #1a1815; border-color: rgba(212,135,58,0.3); }
+    body.light .terminal, body.light .terminal-bar { background: #0c0c0c; }
+    body.light .terminal-input { color: #e8e0d0; }
+    body.light .cursor { background: var(--accent); }
+    body.light .cursor-ring { border-color: rgba(212,135,58,0.4); }
+
     /* ── GALLERY ── */
     #gallery { background: var(--bg2); padding: 80px 48px; }
     .gallery-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
@@ -899,6 +1073,11 @@
       .project-num { display: none; }
       .project-link { align-self: flex-start; }
       .exp-item { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+      .skills-bubbles { height: 400px; }
+      .terminal-section, .code-section { padding: 60px 24px; }
+      .code-body { font-size: 10px; }
+      .project-preview { display: none; }
+      .exp-projects { margin-left: 0; }
       .exp-projects-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
       .hero-scroll { display: none; }
@@ -915,10 +1094,33 @@
       .about-stats { grid-template-columns: 1fr 1fr; }
       .hero-pill { font-size: 9px; padding: 8px 18px; }
     }
+    @media (min-width: 1600px) {
+      body { font-size: 17px; }
+      .nav-links a { font-size: 16px; }
+      .section-title { font-size: clamp(44px, 5vw, 68px); }
+      .about-text p { font-size: 16px; }
+      .exp-company { font-size: 40px; }
+      .exp-role { font-size: 22px; }
+      .exp-bullets li { font-size: 18px; }
+      .exp-projects-label { font-size: 18px; }
+      .exp-project-title { font-size: 19px; }
+      .exp-project-desc { font-size: 15px; }
+      .ptag { font-size: 13px; }
+      .project-name, a.project-name { font-size: 34px; }
+      .project-desc { font-size: 15px; }
+      .tag { font-size: 13px; }
+      .stat-num { font-size: 64px; }
+      .stat-label { font-size: 12px; }
+      .hero-role { font-size: 15px; }
+      .hero-tagline { font-size: 16px; }
+      .contact-sub { font-size: 16px; }
+      .skill-group-title { font-size: 13px; }
+    }
   </style>
 </head>
 <body>
 
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -931,6 +1133,7 @@
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg></button>
     </div>
   </div>
 
@@ -974,6 +1177,25 @@
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary"><span>View Projects</span></a>
         <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+
+      <div class="hero-terminal">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span class="terminal-title">caige@portfolio ~ </span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">caige --help</span></div>
+            <div class="terminal-line"><span class="output">Available commands: <span class="hl">--skills</span>, <span class="hl">--projects</span>, <span class="hl">--contact</span>, <span class="hl">--whoami</span></span></div>
+          </div>
+          <div class="terminal-input-wrap">
+            <span class="prompt">$ </span>
+            <input type="text" class="terminal-input" id="terminalInput" placeholder="try: caige --whoami" autocomplete="off" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1057,6 +1279,7 @@
 
       <div class="project-item reveal" data-href="projects/agent-board.html">
         <div class="project-bg" style="background-image: url('pictures/agent-board-screenshot.png')"></div>
+        <div class="project-preview" style="background-image: url('pictures/agent-board-screenshot.png')"></div>
         <div class="project-num">01</div>
         <div>
           <a href="projects/agent-board.html" class="project-name">Agentic Project Management</a>
@@ -1073,6 +1296,7 @@
 
       <div class="project-item reveal reveal-d1" data-href="projects/azerothhub.html">
         <div class="project-bg" style="background-image: url('pictures/azerothhub-hero.png')"></div>
+        <div class="project-preview" style="background-image: url('pictures/azerothhub-hero.png')"></div>
         <div class="project-num">02</div>
         <div>
           <a href="projects/azerothhub.html" class="project-name">AzerothHub</a>
@@ -1104,6 +1328,7 @@
 
       <div class="project-item reveal reveal-d3" data-href="projects/import-preflight.html">
         <div class="project-bg" style="background-image: url('pictures/import-preflight-dashboard.png')"></div>
+        <div class="project-preview" style="background-image: url('pictures/import-preflight-dashboard.png')"></div>
         <div class="project-num">04</div>
         <div>
           <a href="projects/import-preflight.html" class="project-name">Import Preflight</a>
@@ -1118,20 +1343,6 @@
         <a href="projects/import-preflight.html" class="project-link">View &rarr;</a>
       </div>
 
-      <div class="project-item reveal reveal-d4" data-href="projects/restaurant-online.html">
-        <div class="project-num">05</div>
-        <div>
-          <a href="projects/restaurant-online.html" class="project-name">Restaurant Online Presence &amp; Ordering</a>
-          <div class="project-desc">A B2B SaaS platform managing Google Business Profiles, commission-free ordering, websites, and marketing for DFW restaurants. Multi-tenant architecture with marketing site, restaurant portal, and admin dashboard — all on a Convex real-time backend.</div>
-          <div class="project-stack">
-            <span class="project-tag">Next.js</span>
-            <span class="project-tag">Convex</span>
-            <span class="project-tag">Clerk</span>
-            <span class="project-tag">Tailwind</span>
-          </div>
-        </div>
-        <a href="projects/restaurant-online.html" class="project-link">View &rarr;</a>
-      </div>
 
     </div>
   </section>
@@ -1162,36 +1373,36 @@
           <div class="exp-projects">
             <div class="exp-projects-label">Key Projects</div>
             <div class="exp-projects-grid">
-            <span class="exp-project-link exp-project-nda">
-              Vehicle Gate Automation <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">24/7 mission-critical system deployed across dozens of client sites. Sole technical architect, developer, QA, and DevOps.</div>
-              <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">Internal SDK</span><span class="ptag">CV / OCR</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              Factory Operation Tracking &amp; Optimization <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Data review dashboards and throughput optimization for manufacturing clients.</div>
-              <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">Streamlit</span><span class="ptag">N8N</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              CV Safety Detection <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Person down, red zone entry, collision path detection. Data review and optimization pipeline.</div>
-              <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">N8N</span><span class="ptag">Computer Vision</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              MCP Server for N8N &amp; Data Classification <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">MCP server giving Claude access to self-hosted N8N and product data. Classifies data (true/false positive) to optimize workflows.</div>
-              <div class="exp-project-tech"><span class="ptag">MCP</span><span class="ptag">Claude</span><span class="ptag">GraphQL API</span><span class="ptag">N8N</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              Internal SDK <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Dev tools streamlining platform integration — centralized access for FDEs and sales to build faster on the product.</div>
-              <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">SDK Design</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              N8N Platform for Clients <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Dozens of custom N8N nodes on self-hosted platform, handed off to consulting firms and clients to build on.</div>
-              <div class="exp-project-tech"><span class="ptag">N8N</span><span class="ptag">GraphQL API</span><span class="ptag">Custom Nodes</span></div>
-            </span>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Vehicle Gate Automation <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">24/7 mission-critical system deployed across dozens of client sites. Sole technical architect, developer, QA, and DevOps.</div>
+                <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">SDK</span><span class="ptag">CV / OCR</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Factory Tracking &amp; Optimization <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Data review dashboards and throughput optimization for manufacturing clients.</div>
+                <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">Streamlit</span><span class="ptag">N8N</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">CV Safety Detection <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Person down, red zone entry, collision path detection. Data review and optimization pipeline.</div>
+                <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">N8N</span><span class="ptag">CV</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">MCP Server &amp; Data Classification <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">MCP server giving Claude access to self-hosted N8N and product data. Classifies data (true/false positive) to optimize workflows.</div>
+                <div class="exp-project-tech"><span class="ptag">MCP</span><span class="ptag">Claude</span><span class="ptag">GraphQL API</span><span class="ptag">N8N</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Internal SDK <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Dev tools streamlining platform integration — centralized access for FDEs and sales to build faster on the product.</div>
+                <div class="exp-project-tech"><span class="ptag">Python</span><span class="ptag">GraphQL API</span><span class="ptag">SDK Design</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">N8N Platform for Clients <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Dozens of custom N8N nodes on self-hosted platform, handed off to consulting firms and clients to build on.</div>
+                <div class="exp-project-tech"><span class="ptag">N8N</span><span class="ptag">GraphQL API</span><span class="ptag">Custom Nodes</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1214,21 +1425,21 @@
           <div class="exp-projects">
             <div class="exp-projects-label">Key Projects</div>
             <div class="exp-projects-grid">
-            <span class="exp-project-link exp-project-nda">
-              Large Data Compiler <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Translated data from 12 external partners to internal teams with scalable microservice architecture.</div>
-              <div class="exp-project-tech"><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">Entity Framework</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              Sales Replay <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Record, transcribe, and apply AI features — semantic analysis, Q&amp;A extraction, rankings against training manual, AI feedback. Microservices synced with Playbook.</div>
-              <div class="exp-project-tech"><span class="ptag">OpenAI</span><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">IoT Edge</span><span class="ptag">Microservices</span></div>
-            </span>
-            <span class="exp-project-link exp-project-nda">
-              Playbook <span class="nda-tag">NDA</span>
-              <div class="exp-project-desc">Knowledge base with scripted homework, recording, and AI roleplay for sales training. RAG architecture for AI responses.</div>
-              <div class="exp-project-tech"><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">Python</span><span class="ptag">WebSockets</span><span class="ptag">OpenAI</span><span class="ptag">RAG</span></div>
-            </span>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Large Data Compiler <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Translated data from 12 external partners to internal teams with scalable microservice architecture.</div>
+                <div class="exp-project-tech"><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">Entity Framework</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Sales Replay <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Record, transcribe, and apply AI features — semantic analysis, Q&amp;A extraction, rankings against training manual, AI feedback. Microservices synced with Playbook.</div>
+                <div class="exp-project-tech"><span class="ptag">OpenAI</span><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">SQL</span><span class="ptag">IoT Edge</span></div>
+              </div>
+              <div class="exp-project-link">
+                <div class="exp-project-title">Playbook <span class="nda-tag">NDA</span></div>
+                <div class="exp-project-desc">Knowledge base with scripted homework, recording, and AI roleplay for sales training. RAG architecture for AI responses.</div>
+                <div class="exp-project-tech"><span class="ptag">.NET</span><span class="ptag">Angular</span><span class="ptag">Python</span><span class="ptag">OpenAI</span><span class="ptag">RAG</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1260,7 +1471,12 @@
       <h2 class="section-title">Skills</h2>
       <div class="section-line"></div>
     </div>
-    <div class="skills-grid reveal reveal-d1">
+    <div class="skills-toggle reveal">
+      <button class="skills-toggle-btn active" data-view="bubbles">Bubble View</button>
+      <button class="skills-toggle-btn" data-view="grid">Grid View</button>
+    </div>
+    <div class="skills-bubbles active" id="skillsBubbles"></div>
+    <div class="skills-grid hidden reveal reveal-d1">
       <div class="skill-group">
         <div class="skill-group-title">Languages</div>
         <div class="skill-tags">
@@ -1357,14 +1573,19 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">AI-Assisted Development</div>
+        <div class="skill-group-title">Developer Tooling & DX</div>
         <div class="skill-tags">
-          <span class="tag">AI-Assisted Coding</span>
-          <span class="tag">MCP Server Design</span>
-          <span class="tag">MCP Server Maintenance</span>
-          <span class="tag">Claude Skill Development</span>
-          <span class="tag">Skill Distribution</span>
-          <span class="tag">Prompt Engineering</span>
+          <span class="tag" data-start="2025">SDK Design & Development</span>
+          <span class="tag" data-start="2025">MCP Design & Maintenance</span>
+          <span class="tag" data-start="2023">CLI Tooling</span>
+          <span class="tag" data-start="2021">API Design & Documentation</span>
+          <span class="tag" data-start="2021">Internal Developer Tooling</span>
+          <span class="tag" data-start="2021">Platform Integration Patterns</span>
+          <span class="tag" data-start="2023">Developer Onboarding / Training</span>
+          <span class="tag" data-start="2025">N8N Custom Nodes</span>
+          <span class="tag" data-start="2025">Claude Skill Dev & Distribution</span>
+          <span class="tag" data-start="2021">Microservices</span>
+          <span class="tag" data-start="2023">Monorepo</span>
         </div>
       </div>
       <div class="skill-group">
@@ -1379,6 +1600,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ═══════════════ CONTACT ═══════════════ -->
   <section id="contact">
@@ -1472,6 +1694,235 @@
       tag.setAttribute('data-yrs', yrs + (yrs === 1 ? 'yr' : 'yrs'));
     });
 
+    /* ── Skills Bubble View ── */
+    (function() {
+      const CY = new Date().getFullYear();
+      const bubbleData = [
+        { name: 'Languages', skills: [
+          {n:'Python',y:2018},{n:'TypeScript',y:2021},{n:'C# / .NET',y:2021},{n:'C / C++',y:2023},{n:'Java',y:2024},{n:'SQL',y:2021},{n:'HTML / CSS',y:2021}
+        ]},
+        { name: 'Frontend', skills: [
+          {n:'React',y:2024},{n:'Next.js',y:2024},{n:'Angular',y:2021},{n:'Tailwind',y:2024},{n:'Dash',y:2025},{n:'Streamlit',y:2025}
+        ]},
+        { name: 'Backend', skills: [
+          {n:'SQL Databases',y:2021},{n:'PostgreSQL',y:2024},{n:'Node.js',y:2022},{n:'REST APIs',y:2021},{n:'GraphQL',y:2025},{n:'FastAPI',y:2024},{n:'Flask',y:2022},{n:'Django',y:2022},{n:'Convex',y:2025},{n:'Supabase',y:2025},{n:'Entity Framework',y:2021},{n:'Microservices',y:2021}
+        ]},
+        { name: 'Infra', skills: [
+          {n:'Docker',y:2023},{n:'Kubernetes',y:2024},{n:'Cloudflare',y:2024},{n:'CI/CD',y:2021},{n:'GitHub Actions',y:2025}
+        ]},
+        { name: 'AWS', skills: [
+          {n:'EC2',y:2023},{n:'S3',y:2023},{n:'Lambda',y:2023},{n:'RDS',y:2023},{n:'CloudFront',y:2023}
+        ]},
+        { name: 'Azure', skills: [
+          {n:'VMs',y:2021},{n:'App Service',y:2021},{n:'Azure SQL',y:2021},{n:'Blob Storage',y:2021},{n:'DevOps',y:2021},{n:'Functions',y:2021},{n:'IoT Edge',y:2021},{n:'AKS',y:2021},{n:'Cognitive Services',y:2022},{n:'Core AI',y:2022},{n:'Databricks',y:2025},{n:'Power BI',y:2025}
+        ]},
+        { name: 'AI / ML', skills: [
+          {n:'LangGraph',y:2025},{n:'N8N',y:2025},{n:'Computer Vision',y:2025},{n:'NLP',y:2024},{n:'Reinforcement Learning',y:2024},{n:'Agentic Workflows',y:2024},{n:'OpenAI / Anthropic',y:2024},{n:'RAG Pipelines',y:2024},{n:'Vector DBs',y:2024},{n:'Pandas / NumPy',y:2024},{n:'Scikit-learn',y:2024},{n:'PyTorch',y:2024},{n:'TorchVision',y:2024}
+        ]},
+        { name: 'Dev Tooling & DX', skills: [
+          {n:'SDK Design',y:2025},{n:'MCP Design',y:2025},{n:'CLI Tooling',y:2023},{n:'API Design & Docs',y:2021},{n:'Internal Tooling',y:2021},{n:'Platform Integration',y:2021},{n:'Dev Onboarding',y:2023},{n:'N8N Custom Nodes',y:2025},{n:'Claude Skills',y:2025},{n:'Microservices',y:2021},{n:'Monorepo',y:2023}
+        ]},
+        { name: 'Practices', skills: [
+          {n:'System Design',y:2021},{n:'Agile / Scrum',y:2021},{n:'Technical PM',y:2024},{n:'QA',y:2023},{n:'Data Visualization',y:2025}
+        ]}
+      ];
+
+      const container = document.getElementById('skillsBubbles');
+      if (!container) return;
+      const colors = [
+        'rgba(212,135,58,','rgba(232,168,74,','rgba(196,106,40,','rgba(240,192,96,',
+        'rgba(220,150,60,','rgba(200,120,45,','rgba(230,180,80,','rgba(180,110,50,','rgba(210,140,55,'
+      ];
+
+      let bubbles = [], expanded = null, dragBubble = null, dragOff = {x:0,y:0}, animId, didDrag = false;
+      let W, H;
+
+      function init() {
+        W = container.offsetWidth; H = container.offsetHeight;
+        container.innerHTML = '';
+        bubbles = bubbleData.map((d, i) => {
+          const totalYrs = d.skills.reduce((s, sk) => s + (sk.y ? CY - sk.y : 1), 0);
+          const r = Math.max(44, Math.min(90, 28 + totalYrs * 1.1 + d.skills.length * 1.5));
+          const c = colors[i % colors.length];
+          const el = document.createElement('div');
+          el.className = 'bubble';
+          el.style.background = c + '0.12)';
+          el.style.border = '1px solid ' + c + '0.4)';
+          el.style.width = el.style.height = r * 2 + 'px';
+          // Find longest skill
+          let topSkill = null, topYrs = 0;
+          d.skills.forEach(s => { if (s.y) { const y = CY - s.y; if (y > topYrs) { topYrs = y; topSkill = s.n; } } });
+          // Scale font with bubble size
+          const labelSize = Math.max(12, Math.min(18, r / 5));
+          const countSize = Math.max(10, Math.min(14, r / 7));
+          el.innerHTML = '<span class="bubble-label" style="font-size:' + labelSize + 'px">' + d.name + '</span>'
+            + '<span class="bubble-count" style="font-size:' + countSize + 'px">' + d.skills.length + ' skills</span>'
+            + (topYrs ? '<span class="bubble-top-skill" style="font-size:' + (countSize - 1) + 'px">' + topYrs + 'yrs</span>' : '')
+            + '<div class="bubble-skills">' + d.skills.map(s => {
+              const yr = s.y ? (CY - s.y) : 0;
+              return '<span class="bubble-skill-tag">' + s.n + (yr ? ' · ' + yr + 'yr' + (yr>1?'s':'') : '') + '</span>';
+            }).join('') + '</div>';
+          container.appendChild(el);
+          return {
+            el, r, baseR: r, x: r + Math.random() * (W - r * 2), y: r + Math.random() * (H - r * 2),
+            vx: (Math.random() - 0.5) * 0.8, vy: (Math.random() - 0.5) * 0.8, data: d, idx: i, c
+          };
+        });
+        // Space them out initially
+        for (let iter = 0; iter < 100; iter++) resolveCollisions();
+        render();
+      }
+
+      function resolveCollisions() {
+        for (let i = 0; i < bubbles.length; i++) {
+          const a = bubbles[i];
+          // Boundaries
+          if (a.x - a.r < 0) { a.x = a.r; a.vx = Math.abs(a.vx) * 0.5; }
+          if (a.x + a.r > W) { a.x = W - a.r; a.vx = -Math.abs(a.vx) * 0.5; }
+          if (a.y - a.r < 0) { a.y = a.r; a.vy = Math.abs(a.vy) * 0.5; }
+          if (a.y + a.r > H) { a.y = H - a.r; a.vy = -Math.abs(a.vy) * 0.5; }
+          // Bubble-bubble
+          for (let j = i + 1; j < bubbles.length; j++) {
+            const b = bubbles[j];
+            const dx = b.x - a.x, dy = b.y - a.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const minD = a.r + b.r + 4;
+            if (dist < minD && dist > 0) {
+              const nx = dx / dist, ny = dy / dist;
+              const overlap = (minD - dist) / 2;
+              if (!a.dragging) { a.x -= nx * overlap; a.y -= ny * overlap; }
+              if (!b.dragging) { b.x += nx * overlap; b.y += ny * overlap; }
+              if (!a.dragging) { a.vx -= nx * 0.3; a.vy -= ny * 0.3; }
+              if (!b.dragging) { b.vx += nx * 0.3; b.vy += ny * 0.3; }
+            }
+          }
+        }
+      }
+
+      function tick() {
+        bubbles.forEach(b => {
+          if (b.dragging) return;
+          b.vx += (W / 2 - b.x) * 0.0002;
+          b.vy += (H / 2 - b.y) * 0.0002;
+          b.vx *= 0.98; b.vy *= 0.98;
+          b.x += b.vx; b.y += b.vy;
+        });
+        resolveCollisions();
+        render();
+        animId = requestAnimationFrame(tick);
+      }
+
+      function render() {
+        bubbles.forEach(b => {
+          const d = b.r * 2;
+          b.el.style.width = d + 'px';
+          b.el.style.height = b.el.classList.contains('expanded') ? 'auto' : d + 'px';
+          b.el.style.minHeight = b.el.classList.contains('expanded') ? d + 'px' : '';
+          b.el.style.transform = 'translate(' + (b.x - b.r) + 'px,' + (b.y - b.r) + 'px)';
+        });
+      }
+
+      function collapseAll() {
+        bubbles.forEach(b => { b.el.classList.remove('expanded'); b.r = b.baseR; });
+        expanded = null;
+      }
+
+      function toggleBubble(el) {
+        const b = bubbles.find(b => b.el === el);
+        if (!b) return;
+        if (b.el.classList.contains('expanded')) {
+          b.el.classList.remove('expanded');
+          b.r = b.baseR;
+          expanded = null;
+        } else {
+          collapseAll();
+          b.el.classList.add('expanded');
+          b.r = Math.max(b.baseR, 140);
+          expanded = b;
+        }
+      }
+
+      // Drag
+      function getPos(e) { const t = e.touches ? e.touches[0] : e; const r = container.getBoundingClientRect(); return {x: t.clientX - r.left, y: t.clientY - r.top}; }
+      container.addEventListener('mousedown', startDrag);
+      container.addEventListener('touchstart', startDrag, {passive: false});
+      function startDrag(e) {
+        const el = e.target.closest('.bubble');
+        if (!el) return;
+        const b = bubbles.find(b => b.el === el);
+        if (!b) return;
+        e.preventDefault();
+        b.dragging = true;
+        dragBubble = b;
+        didDrag = false;
+        const p = getPos(e);
+        dragOff = {x: p.x - b.x, y: p.y - b.y};
+        b.vx = 0; b.vy = 0;
+      }
+      window.addEventListener('mousemove', moveDrag);
+      window.addEventListener('touchmove', moveDrag, {passive: false});
+      function moveDrag(e) {
+        if (!dragBubble) return;
+        e.preventDefault();
+        didDrag = true;
+        const p = getPos(e);
+        dragBubble.x = p.x - dragOff.x;
+        dragBubble.y = p.y - dragOff.y;
+      }
+      window.addEventListener('mouseup', endDrag);
+      window.addEventListener('touchend', endDrag);
+      function endDrag(e) {
+        if (!dragBubble) {
+          // Clicked empty space
+          const el = e.target.closest('.bubble');
+          if (!el && container.contains(e.target)) collapseAll();
+          return;
+        }
+        const clickedEl = dragBubble.el;
+        dragBubble.dragging = false;
+        dragBubble = null;
+        if (!didDrag) toggleBubble(clickedEl);
+      }
+
+      // Toggle
+      document.querySelector('.skills-toggle').addEventListener('click', e => {
+        const btn = e.target.closest('.skills-toggle-btn');
+        if (!btn) return;
+        const view = btn.dataset.view;
+        document.querySelectorAll('.skills-toggle-btn').forEach(b => b.classList.toggle('active', b === btn));
+        const grid = document.querySelector('.skills-grid');
+        const bub = document.getElementById('skillsBubbles');
+        if (view === 'bubbles') {
+          grid.classList.add('hidden');
+          bub.classList.add('active');
+          init();
+          tick();
+        } else {
+          grid.classList.remove('hidden');
+          bub.classList.remove('active');
+          cancelAnimationFrame(animId);
+        }
+      });
+
+      // Resize
+      window.addEventListener('resize', () => {
+        if (container.classList.contains('active')) {
+          W = container.offsetWidth; H = container.offsetHeight;
+        }
+      });
+
+      // Auto-init since bubble view is default
+      const initObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting && container.classList.contains('active')) {
+            init(); tick();
+            initObserver.unobserve(container);
+          }
+        });
+      }, { threshold: 0.05 });
+      initObserver.observe(container);
+    })();
+
     /* ── Gallery Carousel ── */
     const galleryData = {
       agentboard: [{ src: 'pictures/agent-board-screenshot.png', alt: 'AgentBoard — Kanban with AI Agents' }],
@@ -1530,6 +1981,115 @@
         }
       });
     });
+
+    /* ── Scroll Progress Bar ── */
+    const scrollBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.width = (window.scrollY / h * 100) + '%';
+    });
+
+    /* ── Animated Counters ── */
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const text = el.textContent.trim();
+      const match = text.match(/^(\d+)/);
+      if (!match) return;
+      const target = parseInt(match[1]);
+      const suffix = text.replace(match[1], '');
+      let started = false;
+      const cObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !started) {
+            started = true;
+            let current = 0;
+            const step = Math.max(1, Math.floor(target / 40));
+            const interval = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(interval); }
+              el.innerHTML = current + suffix;
+            }, 30);
+            cObs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      cObs.observe(el);
+    });
+
+    /* ── 3D Card Tilt + Jello ── */
+    document.querySelectorAll('.project-item').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        card.classList.remove('jello-out');
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.classList.add('jello-out');
+        card.addEventListener('animationend', () => card.classList.remove('jello-out'), { once: true });
+      });
+    });
+
+    /* ── Magnetic Buttons ── */
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px,' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0,0)';
+        btn.style.transition = 'transform 0.3s ease';
+        setTimeout(() => btn.style.transition = '', 300);
+      });
+    });
+
+    /* ── Terminal ── */
+    const termBody = document.getElementById('terminalBody');
+    const termInput = document.getElementById('terminalInput');
+    const termResponses = {
+      '--whoami': '<span class="hl">Caige Middaugh</span> — FDSE at Worlds, MSAI at UT Austin.\nBuilds production systems, community tools, and platform SDKs.\nCares about the <span class="hl">why</span> as much as the how. Builds for communities too.',
+      '--pickleball': 'AHA! You\'ve found my easter egg. Creative of you trying\nthis command out... Well if you want to know I just play\ncasually, I don\'t do tournaments haha.\n\nMy DUPR is <span class="hl">3.59</span> with 0 reliability from 2024. \u{1F3D3}',
+      '--skills': '<span class="hl">Top skills:</span> Python (8yrs), TypeScript (5yrs), C# (5yrs)\nReact, Next.js, Angular, PostgreSQL, Docker, Kubernetes\nLangGraph, N8N, Computer Vision, NLP, RAG Pipelines\nMCP Servers, Claude Skills, SDK Design, CI/CD',
+      '--projects': '<span class="hl">AgentBoard</span> — AI agent orchestration desktop app (Tauri/Rust)\n<span class="hl">AzerothHub</span> — WoW community tool, thousands of weekly users\n<span class="hl">PickleBrackit</span> — Tournament management, live at picklebrackit.com\n<span class="hl">Import Preflight</span> — Shopify CSV validation, 50+ detectors',
+      '--contact': '<span class="hl">Email:</span> caige.middaugh@hotmail.com\n<span class="hl">LinkedIn:</span> linkedin.com/in/caigemiddaugh\n<span class="hl">GitHub:</span> github.com/caige13',
+      '--help': 'Available commands: <span class="hl">--skills</span>, <span class="hl">--projects</span>, <span class="hl">--contact</span>, <span class="hl">--whoami</span>',
+    };
+    function findCmd(input) {
+      const clean = input.replace(/^caige\s*/, '').trim();
+      return termResponses[clean] || termResponses['--' + clean.replace(/^-+/, '')] || null;
+    }
+    if (termInput) termInput.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      const val = termInput.value.trim().toLowerCase();
+      termInput.value = '';
+      const cmdLine = document.createElement('div');
+      cmdLine.className = 'terminal-line';
+      cmdLine.innerHTML = '<span class="prompt">$ </span><span class="cmd">' + val + '</span>';
+      termBody.appendChild(cmdLine);
+      const out = document.createElement('div');
+      out.className = 'terminal-line';
+      const response = findCmd(val) || '<span class="output">Unknown command. Try <span class="hl">caige --help</span></span>';
+      out.innerHTML = '<span class="output">' + response + '</span>';
+      out.style.whiteSpace = 'pre-wrap';
+      termBody.appendChild(out);
+      termBody.scrollTop = termBody.scrollHeight;
+    });
+
+    /* ── Theme Toggle ── */
+    const themeBtn = document.getElementById('themeToggle');
+    const moonSVG = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>';
+    const sunSVG = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    function setTheme(light) {
+      document.body.classList.toggle('light', light);
+      themeBtn.innerHTML = light ? sunSVG : moonSVG;
+    }
+    // System preference
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) setTheme(true);
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => setTheme(e.matches));
+    themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('light')));
   </script>
 </body>
 </html>
