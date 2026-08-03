@@ -1,0 +1,65 @@
+.site-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px var(--gutter);
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(247, 240, 225, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: var(--border);
+}
+
+.brand {
+  font-family: var(--font-display); font-weight: 700; font-size: 24px;
+  letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
+}
+.brand em { font-style: italic; color: var(--persimmon); }
+
+.site-nav ul { display: flex; gap: 30px; list-style: none; align-items: center; }
+.site-nav ul a:not(.nav-cta) {
+  color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14.5px;
+  letter-spacing: 0.02em; transition: color 0.15s;
+}
+.site-nav ul a:not(.nav-cta):hover { color: var(--persimmon); }
+.nav-cta { padding: 11px 22px; font-size: 14px; }
+
+/* ---------- hero ---------- */
+.hero {
+  max-width: var(--container); margin: 0 auto;
+  padding: 92px var(--gutter) 84px;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 6.4vw, 84px);
+  margin: 22px 0 26px;
+}
+
+.hero .lede { color: var(--soft); font-size: 18px; max-width: 500px; }
+.hero .lede strong { color: var(--ink); }
+
+.hero-actions { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+
+.hero-card { position: relative; transform: rotate(2.5deg); }
+.hero-card .frame {
+  background: var(--card); border: var(--border); border-radius: 14px;
+  box-shadow: var(--shadow-card); overflow: hidden;
+}
+.hero-card figcaption {
+  font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--soft);
+  text-align: center; padding: 12px 0 14px; border-top: 2px dashed var(--cream-2);
+}
+
+.sticker {
+  position: absolute; top: -30px; right: -26px; z-index: 2;
+  background: var(--mustard); border: var(--border); border-radius: 50%;
+  width: 116px; height: 116px; display: grid; place-items: center; text-align: center;
+  font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  line-height: 1.45; transform: rotate(-11deg); box-shadow: 3px 3px 0 var(--ink);
+}
+
+@media (max-width: 900px) {
+  .site-nav { padding: 15px var(--gutter); }
+  .site-nav ul { gap: 18px; }
+  .site-nav ul li:not(:last-child) { display: none; }
+  .hero { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 64px; gap: 64px; }
+  .sticker { top: -26px; right: 0; }
+}

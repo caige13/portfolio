@@ -1,0 +1,57 @@
+.contact { background: var(--mustard); border-top: var(--border); }
+
+.contact-inner { max-width: 780px; text-align: center; }
+
+.contact h2 { font-size: clamp(40px, 5.5vw, 68px); margin: 18px 0; }
+.contact .eyebrow { color: var(--ink); }
+.contact .eyebrow::before { background: var(--persimmon); }
+
+.contact-sub { color: var(--mustard-ink); max-width: 520px; margin: 0 auto 40px; }
+
+.contact-form, .form-success { padding: 36px 40px; text-align: left; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.contact-form label {
+  display: block; font-weight: 800; font-size: 13px; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 18px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  display: block; width: 100%; margin-top: 8px;
+  font-family: var(--font-body); font-size: 16px; color: var(--ink);
+  background: var(--cream); border: var(--border); border-radius: 10px;
+  padding: 13px 16px; transition: box-shadow 0.15s;
+}
+.contact-form textarea { resize: vertical; }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none; box-shadow: 3px 3px 0 var(--mustard);
+}
+
+.contact-form ::placeholder { color: var(--soft); opacity: 0.7; }
+
+/* honeypot: visually removed, still in the DOM for bots */
+.hp-field {
+  position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+
+.form-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.or-email { color: var(--soft); font-size: 15px; }
+.or-email a { color: var(--persimmon); font-weight: 700; }
+
+.form-error {
+  margin-top: 18px; font-weight: 700; color: var(--persimmon-dark);
+  background: var(--cream); border: var(--border); border-radius: 10px; padding: 12px 16px;
+}
+
+.form-success { text-align: center; }
+.form-success h3 { font-size: 30px; margin-bottom: 10px; }
+.form-success p { color: var(--soft); }
+
+@media (max-width: 700px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-form, .form-success { padding: 24px 22px; }
+}
