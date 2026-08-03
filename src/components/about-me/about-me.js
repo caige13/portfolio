@@ -16,8 +16,8 @@ function AboutMe() {
                     <div className="eyebrow">Get to know me</div>
                     <h2>Listen, build, ship, <em className="squiggle">iterate.</em></h2>
                     <p>
-                        I'm a software engineer who cares about <strong>building things people
-                        actually use</strong> — and making the people around me more effective.
+                        I'm a software engineer who cares about <strong>delivering real value
+                        to the people I build for</strong> — and making the people around me more effective.
                         Whether that's shipping production systems, building internal tools that
                         improve a team's quality of life, or creating something a community asked
                         for, the throughline is the same.

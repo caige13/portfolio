@@ -20,7 +20,7 @@ function Header() {
             <section className="hero" id="top">
                 <div className="hero-copy">
                     <div className="eyebrow">Software engineer &middot; DFW, Texas</div>
-                    <h1>I build things people <em className="squiggle">actually&nbsp;use.</em></h1>
+                    <h1>I build with a focus on <em className="squiggle">client&nbsp;value.</em></h1>
                     <p className="lede">
                         Forward Deployed Software Engineer at <strong>Worlds</strong>, MSAI candidate
                         at <strong>UT Austin</strong> — and freelance builder of one-of-a-kind websites
