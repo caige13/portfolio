@@ -1,4 +1,18 @@
-.skills-title { text-align: center; font-size: clamp(36px, 4.6vw, 58px); margin: 18px 0 52px; }
+.skills-title { text-align: center; font-size: clamp(36px, 4.6vw, 58px); margin: 18px 0 28px; }
+
+.skills-toggle {
+  display: flex; justify-content: center; gap: 0; margin-bottom: 34px;
+}
+.skills-toggle-btn {
+  font-family: var(--font-body); font-weight: 800; font-size: 13.5px;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  background: var(--card); color: var(--ink); border: var(--border);
+  padding: 10px 24px; transition: background 0.15s, color 0.15s;
+}
+.skills-toggle-btn:first-child { border-radius: 999px 0 0 999px; border-right-width: 1px; }
+.skills-toggle-btn:last-child { border-radius: 0 999px 999px 0; border-left-width: 1px; }
+.skills-toggle-btn.active { background: var(--persimmon); color: var(--card); }
+.skills-toggle-btn:not(.active):hover { background: var(--cream-2); }
 
 .skill-groups {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start;
