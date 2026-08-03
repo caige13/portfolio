@@ -1,0 +1,14 @@
+.site-footer {
+  border-top: var(--border); background: var(--cream);
+  padding: 20px var(--gutter);
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  font-size: 14px; font-weight: 700; color: var(--soft);
+}
+
+.site-footer ul { display: flex; gap: 22px; list-style: none; }
+
+.site-footer a {
+  color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--mustard);
+  padding-bottom: 1px; transition: color 0.15s;
+}
+.site-footer a:hover { color: var(--persimmon); }

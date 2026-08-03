@@ -1,0 +1,23 @@
+.skills-title { text-align: center; font-size: clamp(36px, 4.6vw, 58px); margin: 18px 0 52px; }
+
+.skill-groups {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start;
+}
+
+.skill-group { padding: 26px 28px; box-shadow: var(--shadow-btn); }
+.skill-group:nth-child(3n + 1) { transform: rotate(-0.7deg); }
+.skill-group:nth-child(3n + 2) { transform: rotate(0.5deg); }
+.skill-group:nth-child(3n) { transform: rotate(-0.3deg); }
+
+.skill-group h3 {
+  font-size: 20px; margin-bottom: 16px; font-style: italic; color: var(--persimmon);
+}
+
+.skill-chips { list-style: none; margin-bottom: 0; }
+
+@media (max-width: 1000px) {
+  .skill-groups { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .skill-groups { grid-template-columns: 1fr; }
+}

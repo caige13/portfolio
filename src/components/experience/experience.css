@@ -1,0 +1,52 @@
+.experience { background: var(--cream-2); border-top: var(--border); border-bottom: var(--border); }
+
+.experience h2 { font-size: clamp(36px, 4.4vw, 54px); margin: 18px 0 48px; }
+
+.exp-list { display: grid; gap: 36px; }
+
+.exp-card { padding: 34px 38px; }
+
+.exp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+.exp-head h3 { font-size: 28px; }
+.exp-role { font-weight: 800; color: var(--persimmon); font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+.exp-dates { font-family: var(--font-display); font-style: italic; color: var(--soft); font-size: 16px; }
+
+.exp-bullets { margin: 20px 0 22px; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.exp-bullets li { color: var(--soft); padding-left: 26px; position: relative; }
+.exp-bullets li::before {
+  content: '▸'; position: absolute; left: 4px; color: var(--mustard); font-weight: 800;
+}
+
+.exp-chips { margin-bottom: 0; }
+
+/* Ethos key-project mini cards */
+.kp { margin-top: 26px; border-top: 2px dashed var(--cream-2); padding-top: 24px; }
+.kp-intro { margin-bottom: 18px; }
+
+.kp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+.kp-card {
+  background: var(--cream); border: var(--border); border-radius: 12px;
+  padding: 18px 20px; box-shadow: 3px 3px 0 var(--ink);
+}
+.kp-card h4 {
+  font-family: var(--font-display); font-weight: 600; font-size: 19px;
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+.kp-card p { color: var(--soft); font-size: 14px; margin-bottom: 14px; }
+
+@media (max-width: 900px) {
+  .kp-grid { grid-template-columns: 1fr; }
+}
+
+.edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+
+.edu-card { padding: 28px 30px; }
+.edu-card h3 { font-size: 22px; margin: 16px 0 6px; }
+.edu-school { font-weight: 700; }
+.edu-note { color: var(--soft); font-size: 15px; margin-top: 10px; }
+
+@media (max-width: 900px) {
+  .exp-card { padding: 24px; }
+  .edu-row { grid-template-columns: 1fr; }
+}
