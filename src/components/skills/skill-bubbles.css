@@ -1,0 +1,69 @@
+.bubble-arena-wrap { position: relative; }
+
+.bubble-hint {
+  font-family: var(--font-display); font-style: italic; color: var(--soft);
+  text-align: center; margin-bottom: 16px; font-size: 16px;
+}
+
+.bubble-arena {
+  position: relative; height: 540px; overflow: hidden;
+  background: var(--card);
+  background-image: radial-gradient(var(--cream-2) 2px, transparent 2px);
+  background-size: 26px 26px;
+  border: var(--border); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  touch-action: none;
+  cursor: grab;
+}
+
+.bubble {
+  position: absolute; top: 0; left: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; text-align: center;
+  border: var(--border); border-radius: 50%;
+  box-shadow: 3px 3px 0 rgba(45, 36, 24, 0.55);
+  cursor: grab; user-select: none;
+  will-change: transform;
+}
+.bubble:active { cursor: grabbing; }
+
+.bubble.tone-card { background: var(--card); }
+.bubble.tone-cream { background: var(--cream-2); }
+.bubble.tone-mustard { background: var(--mustard); }
+.bubble.tone-persimmon { background: var(--persimmon); }
+.bubble.tone-persimmon .bubble-label,
+.bubble.tone-persimmon .bubble-count { color: var(--card); }
+
+.bubble-label {
+  font-weight: 800; letter-spacing: 0.02em; line-height: 1.1;
+  padding: 0 10px; pointer-events: none;
+}
+.bubble-count {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--soft); pointer-events: none;
+}
+
+.bubble .bubble-skills { display: none; }
+
+/* expanded: circle relaxes into a card showing every skill + years */
+.bubble.expanded {
+  width: min(300px, 86vw) !important; height: auto !important; min-height: 170px;
+  border-radius: 20px; z-index: 5;
+  background: var(--card); padding: 18px 16px 16px;
+  box-shadow: 6px 6px 0 rgba(45, 36, 24, 0.9);
+  cursor: pointer;
+}
+.bubble.expanded .bubble-label { color: var(--persimmon); font-size: 19px !important; }
+.bubble.expanded .bubble-count { color: var(--soft); margin-bottom: 8px; }
+.bubble.expanded .bubble-skills {
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; pointer-events: none;
+}
+.bubble-skill-tag {
+  font-size: 11.5px; font-weight: 700;
+  background: var(--cream); border: 1.5px solid var(--ink); border-radius: 999px;
+  padding: 3px 9px; white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .bubble-arena { height: 440px; }
+}
